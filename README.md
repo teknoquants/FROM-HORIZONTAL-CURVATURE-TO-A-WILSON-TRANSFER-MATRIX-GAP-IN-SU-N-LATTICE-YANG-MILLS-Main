@@ -3,8 +3,8 @@
 Companion code to the white paper *From Horizontal Curvature to a Wilson Transfer-Matrix Gap in SU(N) Lattice Yang–Mills*
 (R. Cooperman and A.E. Petrunina V.V., XISOSIS, Vienna, 16 November 2026).
 
-- Repository: `[GitHub link placeholder]`
-- DOI: `[Zenodo DOI placeholder]`
+- Repository: https://github.com/teknoquants/FROM-HORIZONTAL-CURVATURE-TO-A-WILSON-TRANSFER-MATRIX-GAP-IN-SU-N-LATTICE-YANG-MILLS-Main
+- DOI: https://doi.org/10.5281/zenodo.24284698
 - Licence: MIT (see `LICENSE`; every Python file carries the licence header)
 
 ## Running
