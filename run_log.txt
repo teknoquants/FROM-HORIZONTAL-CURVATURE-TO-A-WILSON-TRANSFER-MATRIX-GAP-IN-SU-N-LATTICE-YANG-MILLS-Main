@@ -1,0 +1,40 @@
+=== validate_part1_lsi.py
+  [PASS] (a) the mass int u_t d mu_t is conserved along the flow
+  [PASS] (b) d/dt Ent_{mu_t}(u_t) = -I(t)  (beta=0.5: rel. err. 2.7e-05, 2.3e-05; beta=1.0: rel. err. 2.7e-05, 1.7e-05; beta=2.0: rel. err. 3.2e-05, 5.3e-05)
+  [PASS] (c) I'(t) = -2 int u [ ||Hess log u||^2 + (Ric + 2 Hess V)(grad log u, grad log u) ] d mu_t
+  [PASS] (d) I(t) <= e^{-2 Lambda(t)} I(0) with the curvature profile kappa = 1 - max q''
+  [PASS] (e) Ent_mu(g) = int_0^infty I dt, and Ent_mu(f^2) <= 2 C_kappa int |grad f|^2 d mu  (beta=0.5: Ent = 0.1084 <= 2 C_k |grad f|^2 = 0.3447 (C_k = 2.078); beta=1.0: Ent = 0.2918 <= 2 C_k |grad f|^2 = 3.0895 (C_k = 6.552); beta=2.0: Ent = 0.3248 <= 2 C_k |grad f|^2 = 136.4175 (C_k = 221.894))
+  [PASS] (f) beta = 0: kappa = Ric = 1, C_kappa = 2/N = 1; Ent(f^2) <= (4/N) int |grad f|^2 for random f  (largest ratio Ent/int|grad f|^2 = 1.3038 (sharp sphere value 4/3 = 1.3333))
+  -> Theorem 1 (log-Sobolev inequality), one SU(2) loop: 6/6 checks passed
+
+=== validate_part2_oneloop.py
+  [PASS] (a) Z(beta) even in beta (f^2 d mu is the reflected measure); derivative identity for sin^3 e^{2 beta cos}
+  [PASS] (b) Ent(f^2) = 4 beta m, 2 beta E[sin^2] = 3 m, int|grad f|^2 = 3 beta m, ratio 2/3  (beta=0.1: m = 0.0499; beta=1: m = 0.4331; beta=4: m = 0.8192)
+  [PASS] (c) beta = 0: C_opt = 2/3 and the log-Sobolev optimum is 2/3 (sphere S^3, Ric = 1)  (C_opt = 0.666667, LS optimum 0.666666)
+  [PASS] (d) C_opt(beta) <= 2/3 <= C_LS(beta) <= C_kappa(beta); C_opt decays like 1/(2 beta), C_LS does not  (beta=0.5: C_opt = 0.6251, C_kappa = 2.078; beta=1: C_opt = 0.5271, C_kappa = 6.552; beta=2: C_opt = 0.3278, C_kappa = 221.9; beta=4: C_opt = 0.1460, C_kappa = 1.878e+06; beta=8: C_opt = 0.0669, C_kappa = 7.787e+14)
+  [PASS] (e) no function in the tested families exceeds 2/3; f_beta is a local maximum (evidence that C_LS = 2/3)  (beta=0.05: best 0.666667; beta=1: best 0.666667; beta=4: best 0.666667)
+  -> Proposition 2 (one-loop log-Sobolev constant): 5/5 checks passed
+
+=== validate_part3_decay.py
+  [PASS] (a) TV <= tanh(a/4) for log-ratio oscillation a; equality for symmetric two-point laws  (largest TV/tanh(a/4) over random laws 0.999)
+  [PASS] (b) each link: 2(d-1) plaquettes x 3 other links; n_ej <= 1; sum_j n_ej = 18 in 4D, 6 in 2D  (4D side 3: 6 plaquettes, 18 neighbours; 2D side 4: 2 plaquettes, 6 neighbours)
+  [PASS] (c) SU(2): one changed neighbour moves the conditional law by at most tanh(N^2 beta n_ej)  (beta=0.005: max TV 0.00849 vs tanh(4 beta) 0.02000; beta=0.01: max TV 0.01698 vs tanh(4 beta) 0.03998; beta=0.02: max TV 0.03394 vs tanh(4 beta) 0.07983; beta=0.05: max TV 0.08469 vs tanh(4 beta) 0.19738)
+  [PASS] (d) q = 18 tanh(N^2 beta) < 1 iff beta < N^{-2} artanh(1/18); for SU(2) this lies between 1/192 and 1/48  (beta_D(2) = 0.01390, beta_D(3) = 0.00618; 1/192 = 0.00521, 1/48 = 0.02083)
+  [PASS] (e) exact strip covariance obeys the Dobrushin bound with the strip's q = 6 tanh(4 beta)  (beta=0.002: exact rate 18.644 vs strip q-rate 3.037; beta=0.005: exact rate 15.895 vs strip q-rate 2.120; beta=0.01: exact rate 13.816 vs strip q-rate 1.428; beta=0.03: exact rate 10.521 vs strip q-rate 0.333)
+  -> Lemma 3 and Theorem 3 (Dobrushin decay): 5/5 checks passed
+
+=== validate_part4_gap.py
+  [PASS] (a) 4D link graph: spatial slices 0 and t are at distance min(t, T - t)
+  [PASS] (b) character coefficients a_n/(d_n a_0) = I_{n+1}(4 beta)/I_1(4 beta) > 0 (positive transfer matrix)
+  [PASS] (c) strip gap -3 log[I_2/I_1] and the conservative rate reproduce the table  (beta=0.002: 1.9380, 18.6438; beta=0.005: 1.0218, 15.8950; beta=0.01: 0.3290, 13.8157)
+  [PASS] (d) winding chi_{1/2} decays at Delta_strip; adjoint chi_1 misses the first flux state and decays faster  (beta=0.002: rates 18.644 (spin 1/2), 38.504 (spin 1); beta=0.01: rates 13.816 (spin 1/2), 28.848 (spin 1); beta=0.1: rates 6.928 (spin 1/2), 15.062 (spin 1))
+  [PASS] (e) on the vacuum complement the spectral radius is e^{-Delta_strip}; moments decay at exactly that rate
+  [PASS] (f) Theorem 4: the Dobrushin rate (4D and the strip's own) lies below the exact strip gap  (beta=0.002: 4D 1.938, strip 3.037 < gap 18.644; beta=0.005: 4D 1.022, strip 2.120 < gap 15.895; beta=0.01: 4D 0.329, strip 1.428 < gap 13.816)
+  -> Theorem 4 (transfer-matrix gap) and the strip cross-check: 6/6 checks passed
+
+=== Summary
+  PASS  validate_part1_lsi.py  (23 s)
+  PASS  validate_part2_oneloop.py  (65 s)
+  PASS  validate_part3_decay.py  (10 s)
+  PASS  validate_part4_gap.py  (0 s)
+ALL CHECKS PASSED
